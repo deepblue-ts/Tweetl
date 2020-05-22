@@ -3,7 +3,7 @@ from codecs import open
 from os import path
 import re
 
-package_name = "tweetl"
+package_name = "Tweetl"
 
 root_dir = path.abspath(path.dirname(__file__))
 
