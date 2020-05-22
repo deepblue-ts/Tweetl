@@ -47,7 +47,7 @@ Create an instance of the 'CleansingTweets' Class. And using 'cleansing_df' meth
 ```
 # make an instance
 tweet_cleanser = tweetl.CleansingTweets()
-cols = ["text", "user_discription"]
+cols = ["text", "user_description"]
 df_clean = tweet_cleanser.cleansing_df(df_keyword, subset_cols=cols)
 ```
 
