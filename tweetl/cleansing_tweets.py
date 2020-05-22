@@ -61,17 +61,18 @@ class CleansingTweets:
         return text
 
     def cleansing_df(self, df, subset_cols=["text"]):
-        for col in subset_cols:
+        if "text" in subset_cols:
             # remove duplicates (because they might be RT.)
-            df = df.drop_duplicates(subset=col, keep=False)
+            df = df.drop_duplicates(subset="text", keep=False)
 
         df_copy = df.copy()
 
         for col in subset_cols:
             # cleansing
             df_copy[col] = df[col].apply(lambda x: self.cleansing_text(x))
-
+            
+        if "text" in subset_cols:
             # remove duplicates
-            df_copy = df_copy.drop_duplicates(subset=col, keep=False).reset_index(drop=True)
+            df_copy = df_copy.drop_duplicates(subset="text", keep=False).reset_index(drop=True)
 
         return df_copy
