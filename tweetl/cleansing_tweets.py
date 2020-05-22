@@ -19,19 +19,19 @@ class CleansingTweets:
     def cleansing_url(self, text):
         return re.sub(r"(https?|ftp)(:\/\/[-_\.!~*\'()a-zA-Z0-9;\/?:\@&=\+$,%#]+)", "" , text)
 
-    # remove pictograph
+    # remove pictographs
     def cleansing_emoji(self, text):
         return ''.join(c for c in text if c not in emoji.UNICODE_EMOJI)
 
-    # remove mention
+    # remove mentions
     def cleansing_username(self, text):
         return re.sub(r"@([A-Za-z0-9_]+) ", "", text)
 
-    #  remove image string
+    #  remove image strings
     def cleansing_picture(self, text):
         return re.sub(r"pic.twitter.com/[-_\.!~*\'()a-zA-Z0-9;\/?:\@&=\+$,%#]*", "" , text)
 
-    # unify characters.
+    # unify characters
     def cleansing_unity(self, text):
         text = text.lower()
         text = mojimoji.zen_to_han(text, kana=True)
@@ -70,7 +70,7 @@ class CleansingTweets:
         for col in subset_cols:
             # cleansing
             df_copy[col] = df[col].apply(lambda x: self.cleansing_text(x))
-            
+
         if "text" in subset_cols:
             # remove duplicates
             df_copy = df_copy.drop_duplicates(subset="text", keep=False).reset_index(drop=True)
