@@ -61,7 +61,7 @@ df_clean = tweet_cleanser.cleansing_df(df_keyword, subset_cols=cols)
 ```
 
 ## Author
-deepblue
+[deepblue](https://deepblue-ts.co.jp/)
 
 ## License
 This software is released under the MIT License, see [LICENSE](https://github.com/deepblue-ts/Tweetl/blob/master/LICENSE).
