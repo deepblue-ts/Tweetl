@@ -5,9 +5,9 @@ emoji==0.5.4
 idna==2.9
 mojimoji==0.0.11
 neologdn==0.4
-numpy==1.18.4
+numpy
 oauthlib==3.1.0
-pandas==1.0.3
+pandas
 pd==0.0.1
 PySocks==1.7.1
 python-dateutil==2.8.1
