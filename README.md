@@ -35,7 +35,7 @@ tweet_getter = tweetl.GetTweet(
                 )
 ```
 #### With target name
-You can collect tweets of the target if you use 'get_tweets_target' method and set the target's name not inclueded '@'. Then it returns collected tweets as DataFrame type. And you can specify the number of tweets. The default is 100.
+You can collect tweets of the target if you use 'get_tweets_target' method and set the target's name not inclueded '@'. Then it returns collected tweets as DataFrame type. And you can specify the number of tweets.
 ```
 # get 1000 tweets of @Deepblue_ts
 df_target = tweet_getter.get_tweets_target("Deepblue_ts", 1000)
@@ -44,7 +44,7 @@ df_target.head()
 <img width="939" alt="スクリーンショット 2020-05-22 14 33 39" src="https://user-images.githubusercontent.com/37981348/82634800-b27fa480-9c39-11ea-9420-8952717823fb.png">
 
 #### With any keywords
-You can also get tweets about any keywords if you use 'get_tweets_keyword' method and set any one. And you can specify the number of tweets. The default is 100.
+You can also get tweets about any keywords if you use 'get_tweets_keyword' method and set any one. And you can specify the number of tweets.
 ```
 # get 1000 tweets about 'deep learning'
 df_keyword = tweet_getter.get_tweets_keyword("deep learning", 1000)
