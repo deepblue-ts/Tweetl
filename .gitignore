@@ -1,8 +1,8 @@
 venv/
 dist/
 build/
-tweetl.egg-info/
-tweetl/__pycache__/
+Tweetl.egg-info/
+Tweetl/__pycache__/
 
 .pypirc
 .DS_Store

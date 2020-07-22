@@ -1,5 +1,5 @@
-## Tweetl
-By using tweetl, you can simplify the steps from getting tweets to pre-processing them.
+# Tweetl
+By using Tweetl, you can simplify the steps from getting tweets to pre-processing them.
 If you don't have twitter API key, you can get it [here](https://developer.twitter.com/en).
 
 This package help you to ・・・
@@ -18,7 +18,7 @@ pip install Tweetl
 ### Getting Tweets
 Create an instance of the 'GetTweet' Class.
 ```
-import tweetl
+import Tweetl
 
 # your api keys
 consumer_api_key = "xxxxxxxxx"
@@ -27,7 +27,7 @@ access_token = "xxxxxxxxx"
 access_token_secret = "xxxxxxxxx"
 
 # create an instance
-tweet_getter = tweetl.GetTweet(
+tweet_getter = Tweetl.GetTweet(
                     consumer_api_key,
                     consumer_api_secret_key, 
                     access_token, 
@@ -55,7 +55,7 @@ Create an instance of the 'CleansingTweets' Class. And using 'cleansing_df' meth
 
 ```
 # create an instance
-tweet_cleanser = tweetl.CleansingTweets()
+tweet_cleanser = Tweetl.CleansingTweets()
 cols = ["text", "user_description"]
 df_clean = tweet_cleanser.cleansing_df(df_keyword, subset_cols=cols)
 ```
