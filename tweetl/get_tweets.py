@@ -12,19 +12,28 @@ class GetTweet:
             self.api = tweepy.API(auth, wait_on_rate_limit = True, retry_count=5)
 
     # get Target's tweets
-    def get_tweets_target(self, target, count=100):
+    def get_tweets_target(self, target, count=None):
         tweets = {"tweet_id": [], "created_at": [], "text": [], "favorite_count": [], "retweet_count": []}
-        for tweet in tweepy.Cursor(self.api.user_timeline, screen_name = target, exclude_replies = True, count=100).items(count):
-            tweets["tweet_id"].append(tweet.id)
-            tweets["created_at"].append(tweet.created_at)
-            tweets["text"].append(tweet.text)
-            tweets["favorite_count"].append(tweet.favorite_count)
-            tweets["retweet_count"].append(tweet.retweet_count)
+
+        if count != None:
+            for tweet in tweepy.Cursor(self.api.user_timeline, screen_name = target, exclude_replies = True, count=100).items(count):
+                tweets["tweet_id"].append(tweet.id)
+                tweets["created_at"].append(tweet.created_at)
+                tweets["text"].append(tweet.text)
+                tweets["favorite_count"].append(tweet.favorite_count)
+                tweets["retweet_count"].append(tweet.retweet_count)
+        else:
+            for tweet in tweepy.Cursor(self.api.user_timeline, screen_name = target, exclude_replies = True, count=100).items():
+                tweets["tweet_id"].append(tweet.id)
+                tweets["created_at"].append(tweet.created_at)
+                tweets["text"].append(tweet.text)
+                tweets["favorite_count"].append(tweet.favorite_count)
+                tweets["retweet_count"].append(tweet.retweet_count)
 
         return pd.DataFrame(tweets)
 
     # search for keywords
-    def get_tweets_keyword(self, keyword, count=100):
+    def get_tweets_keyword(self, keyword, count=None):
         tweets = {
             "tweet_id": [],
             "created_at": [],
@@ -37,16 +46,30 @@ class GetTweet:
             "favorite_count": [],
             "retweet_count": []
         }
-        for tweet in tweepy.Cursor(self.api.search, q=keyword, include_entities=True, tweet_mode='extended', lang='ja', count=100).items(count):
-            tweets["tweet_id"].append(tweet.id)
-            tweets["created_at"].append(tweet.created_at)
-            tweets["screen_name"].append(tweet.user.screen_name)
-            tweets["user_name"].append(tweet.user.name)
-            tweets["user_description"].append(tweet.user.description)
-            tweets["followers_count"].append(tweet.user.followers_count)
-            tweets["following_count"].append(tweet.user.friends_count)
-            tweets["text"].append(tweet.full_text)
-            tweets["favorite_count"].append(tweet.favorite_count)
-            tweets["retweet_count"].append(tweet.retweet_count)
+
+        if count != None:
+            for tweet in tweepy.Cursor(self.api.search, q=keyword, include_entities=True, tweet_mode='extended', lang='ja', count=100).items(count):
+                tweets["tweet_id"].append(tweet.id)
+                tweets["created_at"].append(tweet.created_at)
+                tweets["screen_name"].append(tweet.user.screen_name)
+                tweets["user_name"].append(tweet.user.name)
+                tweets["user_description"].append(tweet.user.description)
+                tweets["followers_count"].append(tweet.user.followers_count)
+                tweets["following_count"].append(tweet.user.friends_count)
+                tweets["text"].append(tweet.full_text)
+                tweets["favorite_count"].append(tweet.favorite_count)
+                tweets["retweet_count"].append(tweet.retweet_count)
+        else:
+            for tweet in tweepy.Cursor(self.api.search, q=keyword, include_entities=True, tweet_mode='extended', lang='ja', count=100).items():
+                tweets["tweet_id"].append(tweet.id)
+                tweets["created_at"].append(tweet.created_at)
+                tweets["screen_name"].append(tweet.user.screen_name)
+                tweets["user_name"].append(tweet.user.name)
+                tweets["user_description"].append(tweet.user.description)
+                tweets["followers_count"].append(tweet.user.followers_count)
+                tweets["following_count"].append(tweet.user.friends_count)
+                tweets["text"].append(tweet.full_text)
+                tweets["favorite_count"].append(tweet.favorite_count)
+                tweets["retweet_count"].append(tweet.retweet_count)
 
         return pd.DataFrame(tweets)
